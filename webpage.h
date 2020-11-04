@@ -5,6 +5,8 @@ ESP8266WebServer server(server_port);
 
 String Root;
 
+int Sender = 0;
+
 void buildRoot() {
   Root  = "<html>\n";
   Root += "<!--Page web crée par Lecluse Félix pour le bot Discord Mog-->\n";
@@ -17,12 +19,15 @@ void buildRoot() {
   Root += "\n";
   Root += "<body>\n";
   Root += "<div>\n";
-  Root += " <p> " + Text + " </p>\n";
+  Root += " <p>  </p>\n";
   Root += "</div>\n";
   Root += " <form method='POST'>\n";
   Root += "  <label for='contenue'>Écrivez la ligne ici : </label>\n";
-  Root += "  <input name='Texte' id='Texte' placeholder='Texte'></input>\n";
+  Root += "  <input name='Texte' id='Texte' placeholder='Écrivez le texte ici'></input>\n";
   Root += "  <input type='submit' value='Envoyer'></input>\n";
+  Root += " </form>\n";
+  Root += " <form action='Send'>\n";
+  Root += "   <input type='submit' class='' value='Envoyer' title='Envoye le message sur Discord'>\n";
   Root += " </form>\n";
   Root += "</body>\n";
   Root += "</html>\n";
@@ -38,6 +43,14 @@ void handleNotFound() {                     //message d'erreur en cas de problè
   server.send(404, "text/plain", "Error");
 }
 
+
+//Quand l'utilisateur appuie sur un bouton sa envoie un message et ça recharge la page
+void Send() {
+  Sender = 1;
+  handleRoot();
+}
+
+
 void Web() {
   //Code qui rajoute une sécurité avec une authentification quand on se connecte sur la page
   server.on("/", []() {
@@ -46,6 +59,10 @@ void Web() {
   //  }
     handleRoot();
   });
+
+
+  //ici on recueilli les données de la page web (action) et ça active les fonctions (avec les messages)
+  server.on("/Send", Send);
 
   //faire fonctionner le server
   server.begin();

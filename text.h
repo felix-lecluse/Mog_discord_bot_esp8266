@@ -6,7 +6,6 @@ void buildText() {
   Text += "```cs\\n";
   Text += "#Module| N°TP/TD | Date de rendu↓ | Heure de rendu\\n";
   Text += "-------+---------+----------------+----------------\\n";
-  Text += "M3106  |   TP2   | Mercredi 28/10 | 23:55\\n";
   Text += "M3201  |CV/mo/civ| Semaine  02/11 | \\n";
   Text += "M3106  |   TP3   | Mercredi 04/11 | 23:55\\n";
   Text += "M3106  |  Examen | Jeudi    05/11 | 7:45\\n";
