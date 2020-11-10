@@ -22,7 +22,8 @@ void setup() {
   Serial.begin(115200);
   connectWIFI();
   //OTA();
-  buildText();
+  //buildText();
+  Text();
   //sendDiscord("Connexion... kupo");
   Web();
 }
@@ -31,7 +32,7 @@ void loop() {
   //ArduinoOTA.handle();
   server.handleClient();
   if (Sender == HIGH) {
-    sendDiscord(Text);
+    sendDiscord(Discord);
     Sender = 0;
   }
 }

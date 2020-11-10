@@ -18,9 +18,9 @@ void buildRoot() {
   Root += "\n";
   Root += "\n";
   Root += "<body>\n";
-  Root += "<div>\n";
-  Root += " <p>  </p>\n";
-  Root += "</div>\n";
+  Root += " <div>\n";
+  Root += HTML;
+  Root += " </div>\n";
   Root += " <form method='POST'>\n";
   Root += "  <label for='contenue'>Écrivez la ligne ici : </label>\n";
   Root += "  <input name='Texte' id='Texte' placeholder='Écrivez le texte ici'></input>\n";
